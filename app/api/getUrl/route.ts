@@ -5,7 +5,6 @@ export async function GET(
 ) {
   const { searchParams } = new URL(request.url);
   const alis = searchParams.get("alis");
-  console.log(alis)
   const postsCollection = await getCollection(POSTS_COLLECTION);
   const existingEntry = await postsCollection.findOne({ alis: alis });
   console.log(existingEntry)
