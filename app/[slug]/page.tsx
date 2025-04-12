@@ -1,13 +1,14 @@
 'use client';
 import { useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 
-export default function Route({ params }: { params: { slug: string } }) {
+export default function Route() {
+  const {slug} = useParams()
   const router = useRouter();
   useEffect(() => {
     async function handleRedirect() {
       try {
-        const response = await fetch(`/api/getUrl?alis=${params.slug}`);
+        const response = await fetch(`/api/getUrl?alis=${slug}`);
         const res = await response.json();
 
         if (res?.url) {
